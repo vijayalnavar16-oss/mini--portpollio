@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="driverPcb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#450a0a"/>
+    </linearGradient>
+    <linearGradient id="heatsinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <!-- Red PCB -->
+  <rect x="35" y="25" width="250" height="170" rx="8" fill="url(#driverPcb)" stroke="#f87171" stroke-width="2"/>
+  <!-- Mounting corner holes -->
+  <circle cx="48" cy="38" r="4" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="272" cy="38" r="4" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="48" cy="182" r="4" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.5"/>
+  <circle cx="272" cy="182" r="4" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.5"/>
+  <!-- Large Black Finned Heat Sink -->
+  <rect x="100" y="40" width="120" height="75" rx="3" fill="url(#heatsinkGrad)" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Heatsink Fins -->
+  <line x1="115" y1="40" x2="115" y2="115" stroke="#475569" stroke-width="3"/>
+  <line x1="130" y1="40" x2="130" y2="115" stroke="#475569" stroke-width="3"/>
+  <line x1="145" y1="40" x2="145" y2="115" stroke="#475569" stroke-width="3"/>
+  <line x1="160" y1="40" x2="160" y2="115" stroke="#475569" stroke-width="3"/>
+  <line x1="175" y1="40" x2="175" y2="115" stroke="#475569" stroke-width="3"/>
+  <line x1="190" y1="40" x2="190" y2="115" stroke="#475569" stroke-width="3"/>
+  <line x1="205" y1="40" x2="205" y2="115" stroke="#475569" stroke-width="3"/>
+  <rect x="125" y="115" width="70" height="15" rx="2" fill="#020617"/>
+  <text x="160" y="126" fill="#f8fafc" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">L298N DUAL H-BRIDGE</text>
+  <!-- Screw Terminal Block Left (Motor A) -->
+  <rect x="42" y="75" width="28" height="45" rx="2" fill="#15803d" stroke="#166534" stroke-width="1.5"/>
+  <circle cx="56" cy="88" r="4" fill="#020617" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="56" cy="107" r="4" fill="#020617" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="56" y="68" fill="#bbf7d0" font-size="7" font-family="monospace" text-anchor="middle">OUT1/2</text>
+  <!-- Screw Terminal Block Right (Motor B) -->
+  <rect x="250" y="75" width="28" height="45" rx="2" fill="#15803d" stroke="#166534" stroke-width="1.5"/>
+  <circle cx="264" cy="88" r="4" fill="#020617" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="264" cy="107" r="4" fill="#020617" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="264" y="68" fill="#bbf7d0" font-size="7" font-family="monospace" text-anchor="middle">OUT3/4</text>
+  <!-- Power Terminal Block (12V, GND, 5V) -->
+  <rect x="70" y="145" width="55" height="35" rx="2" fill="#15803d" stroke="#166534" stroke-width="1.5"/>
+  <circle cx="80" cy="162" r="4" fill="#020617" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="97" cy="162" r="4" fill="#020617" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="114" cy="162" r="4" fill="#020617" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="80" y="190" fill="#fecaca" font-size="6" font-family="monospace" text-anchor="middle">12V</text>
+  <text x="97" y="190" fill="#fecaca" font-size="6" font-family="monospace" text-anchor="middle">GND</text>
+  <text x="114" y="190" fill="#fecaca" font-size="6" font-family="monospace" text-anchor="middle">+5V</text>
+  <!-- Logic Control Header Pins (ENA, IN1, IN2, IN3, IN4, ENB) -->
+  <rect x="155" y="150" width="90" height="20" fill="#020617" stroke="#475569" stroke-width="1"/>
+  <g fill="#f59e0b">
+    <rect x="162" y="155" width="6" height="10" rx="1"/><rect x="176" y="155" width="6" height="10" rx="1"/>
+    <rect x="190" y="155" width="6" height="10" rx="1"/><rect x="204" y="155" width="6" height="10" rx="1"/>
+    <rect x="218" y="155" width="6" height="10" rx="1"/><rect x="232" y="155" width="6" height="10" rx="1"/>
+  </g>
+  <text x="200" y="185" fill="#fecaca" font-size="7" font-family="monospace" text-anchor="middle">ENA IN1 IN2 IN3 IN4 ENB</text>
+  <!-- 5V Onboard Regulator Jumper -->
+  <rect x="135" y="148" width="10" height="15" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+</svg>

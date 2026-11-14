@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gearboxYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+    <linearGradient id="motorMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <!-- Yellow Plastic Gearbox Housing -->
+  <rect x="100" y="60" width="140" height="80" rx="8" fill="url(#gearboxYellow)" stroke="#a16207" stroke-width="2"/>
+  <!-- Output Drive Shaft (White nylon flatted shaft) -->
+  <rect x="240" y="90" width="30" height="20" rx="2" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="255" y="94" width="15" height="12" fill="#cbd5e1"/>
+  <text x="270" y="82" fill="#38bdf8" font-size="8" font-family="monospace" text-anchor="middle">SHAFT</text>
+  <!-- Internal Gear Details / Housing Fasteners -->
+  <circle cx="130" cy="80" r="4" fill="#713f12"/>
+  <circle cx="210" cy="80" r="4" fill="#713f12"/>
+  <circle cx="130" cy="120" r="4" fill="#713f12"/>
+  <circle cx="210" cy="120" r="4" fill="#713f12"/>
+  <circle cx="170" cy="100" r="16" fill="none" stroke="#eab308" stroke-width="2" stroke-dasharray="3,3"/>
+  <!-- Cylindrical DC Motor Canister (Silver) -->
+  <rect x="40" y="70" width="60" height="60" rx="6" fill="url(#motorMetal)" stroke="#334155" stroke-width="2"/>
+  <!-- Motor Terminals & Power Leads -->
+  <rect x="30" y="82" width="10" height="6" fill="#f59e0b"/>
+  <rect x="30" y="112" width="10" height="6" fill="#f59e0b"/>
+  <!-- Red & Black Wires -->
+  <path d="M 30 85 C 15 85, 10 50, 45 40" fill="none" stroke="#ef4444" stroke-width="3"/>
+  <path d="M 30 115 C 15 115, 10 170, 50 175" fill="none" stroke="#020617" stroke-width="3"/>
+  <!-- Labels -->
+  <text x="70" y="105" fill="#0f172a" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">3-6V DC</text>
+  <text x="170" y="104" fill="#451a03" font-size="11" font-family="sans-serif" font-weight="bold" text-anchor="middle">TT GEARBOX</text>
+  <text x="170" y="148" fill="#e2e8f0" font-size="9" font-family="monospace" text-anchor="middle">Gear Ratio 1:48 (Qty: 2 Motors)</text>
+</svg>

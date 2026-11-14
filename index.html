@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Functional Smart Automotive Safety System Using ESP32 | College Mini-Project</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="assets/esp32.svg">
+</head>
+<body>
+
+  <!-- ===================================================================
+       TOP NOTICE: REAL DEVELOPMENT STATUS
+       =================================================================== -->
+  <div class="top-status-bar">
+    <div class="container">
+      <div class="status-inner">
+        <span class="status-badge-live">
+          <span class="status-pulse-dot"></span>
+          Status: In Progress
+        </span>
+        <span>College Engineering Mini-Project Portfolio &bull; 5th Semester</span>
+        <span style="color: var(--text-dim);">|</span>
+        <span style="color: #cbd5e1;">Single ESP32-WROOM-32 Microcontroller Architecture</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       NAVIGATION BAR
+       =================================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand">
+        <div class="nav-brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="2"/>
+            <rect x="9" y="9" width="6" height="6"/>
+            <line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/>
+            <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
+            <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
+            <line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>
+          </svg>
+        </div>
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">ESP32 AutoSafety</span>
+          <span class="nav-brand-subtitle">Mini-Project Portfolio</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle-btn" id="navToggle" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#overview" class="nav-link">Overview</a></li>
+        <li><a href="#applications" class="nav-link">4 Applications</a></li>
+        <li><a href="#estop" class="nav-link">E-Stop</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#components" class="nav-link">Hardware</a></li>
+        <li><a href="#technologies" class="nav-link">Technologies</a></li>
+        <li><a href="#simulator" class="nav-link">Logic Demo</a></li>
+        <li><a href="#status" class="nav-link">Status</a></li>
+        <li><a href="#future" class="nav-link">Future Scope</a></li>
+      </ul>
+
+      <button class="nav-cta-btn" onclick="window.print()" title="Print or save project documentation as PDF">
+        Print / PDF
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===================================================================
+       HERO SECTION
+       =================================================================== -->
+  <header class="hero" id="hero">
+    <div class="container hero-content">
+      <div class="hero-text-block">
+        <div class="hero-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          Academic Engineering Mini-Project
+        </div>
+        
+        <h1 class="hero-title">
+          Multi-Functional Smart <span>Automotive Safety System</span> Using ESP32
+        </h1>
+
+        <p class="hero-subtitle">
+          An embedded engineering prototype that consolidates four essential automotive safety subsystems onto a single ESP32-WROOM-32 development board using ultrasonic sensors, an accelerometer/gyroscope, an LDR module, LEDs, a buzzer, and DC motors.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#applications" class="btn-primary">
+            Explore 4 Applications
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="#architecture" class="btn-secondary">
+            System Architecture
+          </a>
+          <a href="#simulator" class="btn-secondary">
+            Interactive Logic Sandbox
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat-card">
+            <span class="stat-number">1</span>
+            <span class="stat-label">ESP32 Board</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Safety Apps</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="stat-number">11</span>
+            <span class="stat-label">Components</span>
+          </div>
+          <div class="hero-stat-card">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Emergency Stop</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Academic Metadata Card -->
+      <aside class="hero-meta-card">
+        <div class="meta-card-header">
+          <span class="meta-card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+            Project Information
+          </span>
+          <span class="badge-in-progress">Phase: In Progress</span>
+        </div>
+
+        <div class="meta-rows">
+          <div class="meta-row">
+            <span class="meta-row-label">Student / Author</span>
+            <div class="meta-row-value">
+              <span>[Student Name]</span>
+              <span class="placeholder-tag">Editable Placeholder</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <span class="meta-row-label">Roll Number / USN</span>
+            <div class="meta-row-value">
+              <span>[Roll Number / USN]</span>
+              <span class="placeholder-tag">Editable Placeholder</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <span class="meta-row-label">Academic Program</span>
+            <div class="meta-row-value">
+              <span>[Department / Branch Name]</span>
+              <span class="placeholder-tag">Editable Placeholder</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <span class="meta-row-label">Institution</span>
+            <div class="meta-row-value">
+              <span>[College / University Name]</span>
+              <span class="placeholder-tag">Editable Placeholder</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <span class="meta-row-label">Project Supervisor / Guide</span>
+            <div class="meta-row-value">
+              <span>[Faculty Guide Name]</span>
+              <span class="placeholder-tag">Editable Placeholder</span>
+            </div>
+          </div>
+          <div class="meta-row">
+            <span class="meta-row-label">Target Hardware</span>
+            <div class="meta-row-value" style="border-style: solid; border-color: var(--border-medium);">
+              <span style="color: var(--accent-cyan);">ESP32-WROOM-32 DevKit V1</span>
+              <span class="placeholder-tag" style="background: rgba(56, 189, 248, 0.2);">Single Controller</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="meta-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          This project is in the active development and prototyping stage. No completed production claims are made.
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       SECTION 1: PROJECT OVERVIEW & OBJECTIVES
+       =================================================================== -->
+  <section class="section section-alt" id="overview">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">System Fundamentals</span>
+        <h2 class="section-title">Project Overview &amp; Objectives</h2>
+        <p class="section-desc">
+          Demonstrating how a single ESP32-WROOM-32 development board manages multiple active vehicle safety functions using dedicated sensors, indicators, and motor actuation.
+        </p>
+      </div>
+
+      <div class="overview-grid">
+        <div class="overview-card highlight">
+          <h3>
+            <span class="icon">&#9881;</span>
+            Core System Concept
+          </h3>
+          <p>
+            Automotive active safety relies on real-time awareness of both the internal vehicle dynamics and the surrounding external environment. This project uses <strong>one ESP32-WROOM-32 development board</strong> to demonstrate four basic automotive safety applications using sensors, LEDs, a buzzer, and DC motors.
+          </p>
+          <p>
+            Rather than employing multiple disparate microcontrollers or complex network buses, the entire sensing, decision-making, and actuation logic is handled concurrently on a single ESP32 microcontroller, creating an accessible, cost-effective prototype for engineering evaluation.
+          </p>
+        </div>
+
+        <div class="overview-card">
+          <h3>
+            <span class="icon">&#9888;</span>
+            Engineering Constraints &amp; Status
+          </h3>
+          <p>
+            This system is currently in the <strong>development and planned prototyping stage</strong>. In strict accordance with the project scope:
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem;">
+            <li style="display: flex; gap: 0.5rem; font-size: 0.9rem; color: #cbd5e1;">
+              <span style="color: var(--accent-cyan);">&#10003;</span>
+              Focuses strictly on the four specified safety applications.
+            </li>
+            <li style="display: flex; gap: 0.5rem; font-size: 0.9rem; color: #cbd5e1;">
+              <span style="color: var(--accent-cyan);">&#10003;</span>
+              Uses physical embedded hardware: ultrasonic sensors, MPU6050, LDR, L298N driver, LEDs, buzzer, and DC motors.
+            </li>
+            <li style="display: flex; gap: 0.5rem; font-size: 0.9rem; color: #cbd5e1;">
+              <span style="color: var(--accent-cyan);">&#10003;</span>
+              Includes a dedicated hardware Emergency Stop push button.
+            </li>
+            <li style="display: flex; gap: 0.5rem; font-size: 0.9rem; color: #f87171;">
+              <span style="color: var(--status-danger);">&#10007;</span>
+              Does not include CAN communication, GPS, GSM alerts, cloud, mobile apps, AI, or ANPR.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Working Principle Flow Strip -->
+      <div class="flow-strip">
+        <h4 class="flow-title">Working Principle &bull; Continuous Sensing-Decision-Actuation Loop</h4>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-step-num">STEP 1</div>
+            <div class="flow-step-name">Multi-Sensor Polling</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">Front/Side ultrasonic echo timing, MPU6050 I2C registers, LDR ADC voltage.</p>
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-step">
+            <div class="flow-step-num">STEP 2</div>
+            <div class="flow-step-name">ESP32 Threshold Analysis</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">Compares distance (cm), tilt/shock ($G$), and light intensity against defined thresholds.</p>
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-step">
+            <div class="flow-step-num">STEP 3</div>
+            <div class="flow-step-name">Actuation &amp; Stopping</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">L298N cuts DC motor power on obstacle or impact; headlights toggle based on lux.</p>
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-step">
+            <div class="flow-step-num">STEP 4</div>
+            <div class="flow-step-name">Driver Warning Dispatch</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">Piezo buzzer emits warning tones while dedicated indicator LEDs alert on blind spots &amp; events.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Objectives Grid -->
+      <div style="margin-top: 3.5rem;">
+        <h3 style="font-size: 1.45rem; text-align: center; margin-bottom: 2rem; color: #fff;">Mini-Project Objectives</h3>
+        <div class="objectives-grid">
+          <div class="objective-item">
+            <span class="objective-num">OBJECTIVE 01</span>
+            <h4>Forward Collision Prevention</h4>
+            <p>Implement real-time obstacle ranging using a front HC-SR04 ultrasonic sensor and program the ESP32 to stop the DC motors automatically when an object is dangerously close.</p>
+          </div>
+          <div class="objective-item">
+            <span class="objective-num">OBJECTIVE 02</span>
+            <h4>Lateral Blind Spot Alerting</h4>
+            <p>Deploy two ultrasonic sensors on the vehicle's left and right sides to continuously detect nearby objects and signal the driver through dedicated left and right warning LEDs.</p>
+          </div>
+          <div class="objective-item">
+            <span class="objective-num">OBJECTIVE 03</span>
+            <h4>Adaptive Ambient Lighting</h4>
+            <p>Utilize an LDR sensor to measure ambient light levels and automatically switch headlight LEDs ON in low-light environments and OFF under sufficient daylight.</p>
+          </div>
+          <div class="objective-item">
+            <span class="objective-num">OBJECTIVE 04</span>
+            <h4>Impact-Event Demonstration</h4>
+            <p>Use the MPU6050 accelerometer and gyroscope to detect abnormal movement or impact-like events beyond a predefined threshold, automatically cutting motor drive and sounding the alarm.</p>
+          </div>
+          <div class="objective-item">
+            <span class="objective-num">OBJECTIVE 05</span>
+            <h4>Manual Emergency Fail-Safe</h4>
+            <p>Incorporate a hardwired Emergency Push Button that instantly interrupts motor propulsion and engages warning alerts, providing a guaranteed laboratory safety override.</p>
+          </div>
+          <div class="objective-item">
+            <span class="objective-num">OBJECTIVE 06</span>
+            <h4>Single Microcontroller Efficiency</h4>
+            <p>Demonstrate that all four active safety applications plus the emergency override can be managed reliably by a single ESP32-WROOM-32 development board.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 2: THE FOUR PROJECT APPLICATIONS
+       =================================================================== -->
+  <section class="section" id="applications">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">System Subsystems</span>
+        <h2 class="section-title">The Four Project Applications</h2>
+        <p class="section-desc">
+          Detailed technical specifications for the four foundational safety applications implemented on the prototype.
+        </p>
+      </div>
+
+      <div class="apps-grid">
+        <!-- Application 1 -->
+        <article class="app-card">
+          <div class="app-header">
+            <span class="app-badge app-badge-1">Application 1</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-blue-light);">Front-Facing Safety</span>
+          </div>
+          <h3 class="app-title">Obstacle Detection and Automatic Stopping</h3>
+          <p class="app-desc">
+            Provides automatic forward collision avoidance by continuously measuring the distance to objects ahead and disengaging motor drive before physical contact occurs.
+          </p>
+
+          <ul class="app-specs-list">
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Sensor:</span> 1&times; HC-SR04 ultrasonic sensor positioned facing directly forward on the chassis.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Distance Check:</span> ESP32 transmits trigger pulses and measures the high-state echo duration to calculate distance in centimeters.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Motor Stopping:</span> When the measured distance drops below the safety threshold (e.g. 15 cm), the ESP32 commands the L298N motor driver to stop both DC motors immediately.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Acoustic Warning:</span> A piezo buzzer activates to provide an immediate audible warning to the operator.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Application 2 -->
+        <article class="app-card">
+          <div class="app-header">
+            <span class="app-badge app-badge-2">Application 2</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #fbbf24;">Lateral Flank Safety</span>
+          </div>
+          <h3 class="app-title">Blind Spot Detection</h3>
+          <p class="app-desc">
+            Monitors lateral blind spot zones on both sides of the vehicle to alert the driver about nearby passing objects or adjacent obstacles during turns and lane changes.
+          </p>
+
+          <ul class="app-specs-list">
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Sensors:</span> Two HC-SR04 ultrasonic sensors placed symmetrically on the left and right sides of the chassis.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Proximity Monitoring:</span> Both sensors independently measure side clearance to detect nearby objects within a calibrated lateral threshold.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Left Warning:</span> Left LED illuminates when an obstacle is detected in the vehicle's left blind spot zone.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Right Warning:</span> Right LED illuminates when an obstacle is detected in the vehicle's right blind spot zone.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Application 3 -->
+        <article class="app-card">
+          <div class="app-header">
+            <span class="app-badge app-badge-3">Application 3</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan-light);">Adaptive Lighting</span>
+          </div>
+          <h3 class="app-title">Automatic Headlight Control</h3>
+          <p class="app-desc">
+            Automates vehicle headlight operation based on ambient light intensity, ensuring adequate road illumination in tunnels, underpasses, dusk, or dark conditions without manual intervention.
+          </p>
+
+          <ul class="app-specs-list">
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Sensor:</span> Light Dependent Resistor (LDR) sensor module measuring surrounding ambient lux level.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Illumination Evaluation:</span> ESP32 reads the analog/digital voltage output from the LDR module and compares it to a calibrated daylight threshold.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Automatic ON:</span> Headlight LEDs automatically switch ON in low-light or dark surroundings.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Automatic OFF:</span> Headlight LEDs automatically switch OFF when sufficient ambient daylight is detected.
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Application 4 -->
+        <article class="app-card">
+          <div class="app-header">
+            <span class="app-badge app-badge-4">Application 4</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #c084fc;">Impact Sensing Prototype</span>
+          </div>
+          <h3 class="app-title">Accident Detection Demonstration</h3>
+          <p class="app-desc">
+            Demonstrates an embedded impact-event detection mechanism using a 6-axis inertial measurement unit (IMU) to identify sudden deceleration or shock and activate safety countermeasures.
+          </p>
+
+          <ul class="app-specs-list">
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Sensor:</span> MPU6050 accelerometer and gyroscope communicating via I2C to monitor 3-axis acceleration and angular rate.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Threshold Detection:</span> ESP32 continuously samples motion vectors to detect predefined abnormal movement, severe tilt, or shock-like spikes.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Safety Actuation:</span> When an abnormal movement threshold is breached, the system stops the DC motors immediately.
+              </div>
+            </li>
+            <li class="app-spec-item">
+              <span class="spec-bullet">&bull;</span>
+              <div>
+                <span class="spec-strong">Alarm Indication:</span> The piezo buzzer and warning indicators are latched ON to signal a simulated accident condition.
+              </div>
+            </li>
+          </ul>
+
+          <div class="disclaimer-box">
+            <div class="disclaimer-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              Academic Prototype Notice
+            </div>
+            This is strictly a prototype impact-event demonstration designed to showcase embedded threshold triggering on an educational robotic platform. It is not an automotive-grade certified crash safety or airbag deployment system.
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION: EMERGENCY STOP SUBSYSTEM (E-STOP)
+       =================================================================== -->
+  <section class="section section-alt" id="estop">
+    <div class="container">
+      <div class="estop-banner">
+        <div class="estop-visual">
+          <div class="estop-svg-box">
+            <img src="assets/estop.svg" alt="Emergency Push Button Schematic" style="width: 100%; height: auto;">
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #f87171; text-transform: uppercase;">Hardware Safety Override</span>
+        </div>
+
+        <div class="estop-content">
+          <span class="section-tag" style="color: #f87171; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.1);">
+            Mandatory Safety Feature
+          </span>
+          <h3>Emergency Push Button Override</h3>
+          <p>
+            To ensure laboratory test safety and immediate fail-safe intervention, the system integrates a dedicated physical <strong>Emergency Push Button</strong> directly interfaced with the ESP32.
+          </p>
+
+          <div class="estop-details">
+            <div class="estop-detail-item">
+              <span class="estop-check">&#10004;</span>
+              <div>
+                <strong>Instant Motor Operation Halt:</strong> Pressing the emergency button immediately triggers the ESP32 to inhibit the L298N motor driver, cutting motor power without software polling delay.
+              </div>
+            </div>
+            <div class="estop-detail-item">
+              <span class="estop-check">&#10004;</span>
+              <div>
+                <strong>Audio-Visual Warning Activation:</strong> Engages the piezo buzzer siren and flashes warning indicators to signal that a manual override has taken place.
+              </div>
+            </div>
+            <div class="estop-detail-item">
+              <span class="estop-check">&#10004;</span>
+              <div>
+                <strong>Hardware Fail-Safe Design:</strong> Wired using a pull-up digital GPIO circuit ensuring reliable trigger action during prototype experimentation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 3: WORKING ARCHITECTURE & BLOCK DIAGRAM
+       =================================================================== -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">System Engineering</span>
+        <h2 class="section-title">Working Architecture</h2>
+        <p class="section-desc">
+          Simple block diagram representation showing the data flow: Sensors &rarr; ESP32 &rarr; Motor Driver / DC Motors / LEDs / Buzzer. All four applications operate on a single ESP32 development board.
+        </p>
+      </div>
+
+      <div class="architecture-container">
+        <!-- Embedded Architecture SVG -->
+        <div class="architecture-svg-wrap">
+          <img src="assets/architecture-diagram.svg" alt="System Architecture Diagram: Sensors to ESP32 to Actuators" style="width: 100%; height: auto;">
+        </div>
+
+        <!-- Pinout & Mapping Table -->
+        <div class="mapping-table-wrap">
+          <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 1rem;">Single ESP32 Subsystem Mapping &amp; Interfacing</h4>
+          <table class="mapping-table">
+            <thead>
+              <tr>
+                <th>Safety Application</th>
+                <th>Hardware Sensor (Input)</th>
+                <th>Interface Type</th>
+                <th>ESP32 Processing Logic</th>
+                <th>Actuator / Indicator (Output)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color: #60a5fa;">App 1: Obstacle Stopping</strong></td>
+                <td>HC-SR04 (Front)</td>
+                <td><span class="table-tag">GPIO (Trig &amp; Echo)</span></td>
+                <td>Echo duration converted to distance (cm); compared against safety braking limit (&le; 15 cm).</td>
+                <td>L298N Driver stops 2 DC Motors + Buzzer sounds warning.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #fbbf24;">App 2: Blind Spot Detection</strong></td>
+                <td>2&times; HC-SR04 (Left &amp; Right)</td>
+                <td><span class="table-tag">GPIO (Trig &amp; Echo)</span></td>
+                <td>Left and right lateral distances monitored independently (&le; 20 cm flank zone).</td>
+                <td>Left LED (Left Obstacle) &bull; Right LED (Right Obstacle).</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #22d3ee;">App 3: Automatic Headlights</strong></td>
+                <td>LDR Light Sensor Module</td>
+                <td><span class="table-tag">ADC / Digital DO</span></td>
+                <td>Evaluates surrounding ambient illumination; triggers below calibrated threshold.</td>
+                <td>Headlight LEDs switch ON in dark; switch OFF in daylight.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #c084fc;">App 4: Accident Detection Demo</strong></td>
+                <td>MPU6050 (6-Axis IMU)</td>
+                <td><span class="table-tag">I2C (SDA &amp; SCL)</span></td>
+                <td>Samples linear acceleration vectors and rotational rates for abnormal movement spikes.</td>
+                <td>Stops DC motors immediately + Warning LEDs + Buzzer siren.</td>
+              </tr>
+              <tr>
+                <td><strong style="color: #f87171;">Emergency Override</strong></td>
+                <td>Emergency Push Button</td>
+                <td><span class="table-tag">Digital GPIO (Interrupt)</span></td>
+                <td>High-priority hardware override detected upon mechanical button press.</td>
+                <td>Immediate motor cutoff via L298N + Buzzer warning alarm.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 4: HARDWARE COMPONENTS (SHOW ONLY 11)
+       =================================================================== -->
+  <section class="section section-alt" id="components">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Bill of Materials</span>
+        <h2 class="section-title">Hardware Components</h2>
+        <p class="section-desc">
+          The project utilizes strictly the following 11 hardware components with no extraneous modules.
+        </p>
+      </div>
+
+      <div class="components-grid">
+        <!-- Component 1 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/esp32.svg" alt="ESP32-WROOM-32 DevKit V1">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 01</span>
+            <h3 class="component-title">ESP32-WROOM-32 DevKit V1</h3>
+            <div class="component-role">Central Controller Board</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Primary microcontroller running all four applications, handling ADC, I2C, GPIO interrupt, and PWM motor signals.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Core:</span> <span class="spec-val">Dual-Core 32-bit Xtensa</span></li>
+            <li><span class="spec-key">Role:</span> <span class="spec-val">Central Processing Unit</span></li>
+            <li><span class="spec-key">Operating Voltage:</span> <span class="spec-val">3.3V Logic / 5V USB</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 2 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/ultrasonic.svg" alt="HC-SR04 Ultrasonic Sensors">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 02</span>
+            <h3 class="component-title">3 HC-SR04 Ultrasonic Sensors</h3>
+            <div class="component-role">Front &amp; Lateral Proximity Sensing</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            1 sensor allocated for forward obstacle detection (App 1) and 2 sensors for left and right blind spot detection (App 2).
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Quantity:</span> <span class="spec-val">3 Units (Front, Left, Right)</span></li>
+            <li><span class="spec-key">Range:</span> <span class="spec-val">2 cm to ~400 cm</span></li>
+            <li><span class="spec-key">Acoustic Frequency:</span> <span class="spec-val">40 kHz Ultrasound</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 3 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/mpu6050.svg" alt="MPU6050 6-Axis Motion Sensor">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 03</span>
+            <h3 class="component-title">MPU6050 Sensor</h3>
+            <div class="component-role">6-Axis Accelerometer &amp; Gyroscope</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Monitors vehicle motion dynamics, orientation tilt, and sudden deceleration/shock for the accident detection demonstration (App 4).
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Degrees of Freedom:</span> <span class="spec-val">6-DOF (3-axis Accel + Gyro)</span></li>
+            <li><span class="spec-key">Protocol:</span> <span class="spec-val">I2C (SDA, SCL)</span></li>
+            <li><span class="spec-key">Scale Range:</span> <span class="spec-val">&plusmn;2g to &plusmn;16g</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 4 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/ldr.svg" alt="LDR Sensor Module">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 04</span>
+            <h3 class="component-title">LDR Sensor Module</h3>
+            <div class="component-role">Ambient Light Sensing (App 3)</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Photoresistor with onboard comparator and sensitivity trimmer potentiometer to detect daytime vs low-light conditions.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Outputs:</span> <span class="spec-val">Analog (AO) &amp; Digital (DO)</span></li>
+            <li><span class="spec-key">Comparator:</span> <span class="spec-val">LM393 Onboard</span></li>
+            <li><span class="spec-key">Application:</span> <span class="spec-val">Automatic Headlight Control</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 5 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/l298n.svg" alt="L298N Dual H-Bridge Motor Driver">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 05</span>
+            <h3 class="component-title">L298N Motor Driver</h3>
+            <div class="component-role">Dual H-Bridge Motor Power Controller</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Controls direction and speed of the two DC geared motors. Receives braking commands during obstacle detection, impact, or E-Stop.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Channels:</span> <span class="spec-val">Dual H-Bridge (2 Motors)</span></li>
+            <li><span class="spec-key">Logic Voltage:</span> <span class="spec-val">5V Logic</span></li>
+            <li><span class="spec-key">Drive Voltage:</span> <span class="spec-val">7V &ndash; 12V Motor Rail</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 6 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/dc-motor.svg" alt="DC Geared Motors">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 06</span>
+            <h3 class="component-title">2 DC Geared Motors</h3>
+            <div class="component-role">Chassis Propulsion Drive</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Two DC geared motors providing forward propulsion to the prototype vehicle chassis, stopped automatically upon safety hazard detection.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Quantity:</span> <span class="spec-val">2 Units (Left &amp; Right)</span></li>
+            <li><span class="spec-key">Gear Ratio:</span> <span class="spec-val">1:48 TT Gearbox</span></li>
+            <li><span class="spec-key">Voltage:</span> <span class="spec-val">3V &ndash; 6V DC</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 7 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/buzzer.svg" alt="Piezo Buzzer">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 07</span>
+            <h3 class="component-title">Buzzer</h3>
+            <div class="component-role">Acoustic Warning Indicator</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Provides distinct audible tones for obstacle warning (App 1), impact alert (App 4), and manual emergency stop state.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Type:</span> <span class="spec-val">5V Active Piezo Buzzer</span></li>
+            <li><span class="spec-key">Signal:</span> <span class="spec-val">Digital High / PWM Beep</span></li>
+            <li><span class="spec-key">Alert Role:</span> <span class="spec-val">Audible Warning Tone</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 8 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/led.svg" alt="System LEDs">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 08</span>
+            <h3 class="component-title">LEDs</h3>
+            <div class="component-role">Headlights &amp; Blind Spot Warning Lights</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Headlight LEDs for automatic illumination (App 3), plus separate Left and Right LEDs for blind spot alerts (App 2) and warnings.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Headlights:</span> <span class="spec-val">High-Brightness LEDs (App 3)</span></li>
+            <li><span class="spec-key">Blind Spot:</span> <span class="spec-val">Left &amp; Right Warning LEDs (App 2)</span></li>
+            <li><span class="spec-key">Protection:</span> <span class="spec-val">Current-Limiting Resistors</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 9 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/estop.svg" alt="Emergency Push Button">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 09</span>
+            <h3 class="component-title">Emergency Push Button</h3>
+            <div class="component-role">Manual Safety Override Switch</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Dedicated momentary or latching push button that halts motor operation immediately and activates warning alerts.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Configuration:</span> <span class="spec-val">Normally Open / Pull-Up</span></li>
+            <li><span class="spec-key">Interface:</span> <span class="spec-val">Hardware Interrupt GPIO</span></li>
+            <li><span class="spec-key">Action:</span> <span class="spec-val">Immediate Motor Cutoff &amp; Alert</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 10 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/battery.svg" alt="Battery or Motor Power Supply">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 10</span>
+            <h3 class="component-title">Battery or Suitable Power Supply</h3>
+            <div class="component-role">Independent DC Power Source</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            Supplies DC power to the L298N motor driver and DC motors, while powering the ESP32 development board safely.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Type:</span> <span class="spec-val">Rechargeable Li-ion / DC Pack</span></li>
+            <li><span class="spec-key">Motor Rail:</span> <span class="spec-val">7.4V &ndash; 12V Supply</span></li>
+            <li><span class="spec-key">Logic Isolation:</span> <span class="spec-val">Common Ground with ESP32</span></li>
+          </ul>
+        </div>
+
+        <!-- Component 11 -->
+        <div class="component-card">
+          <div class="component-img-box">
+            <img src="assets/chassis.svg" alt="Connecting Wires and Prototype Chassis">
+          </div>
+          <div class="component-header">
+            <span class="component-number">Component 11</span>
+            <h3 class="component-title">Connecting Wires &amp; Chassis</h3>
+            <div class="component-role">Structural Framework &amp; Wiring Harness</div>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            2WD robotic prototype car chassis with wheels, omnidirectional caster, sensor mounting brackets, and breadboard jumper wires.
+          </p>
+          <ul class="component-specs">
+            <li><span class="spec-key">Chassis:</span> <span class="spec-val">2WD Acrylic Plate + Standoffs</span></li>
+            <li><span class="spec-key">Wiring:</span> <span class="spec-val">Male-Male &amp; Male-Female Dupont</span></li>
+            <li><span class="spec-key">Mounting:</span> <span class="spec-val">Sensor &amp; Driver Standoffs</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 5: TECHNOLOGIES & TOOLS
+       =================================================================== -->
+  <section class="section" id="technologies">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Engineering Stack</span>
+        <h2 class="section-title">Technologies &amp; Tools</h2>
+        <p class="section-desc">
+          Core hardware, firmware, and sensing technologies employed in the design and development of the system.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M15 9h.01"/><path d="M9 15h.01"/><path d="M15 15h.01"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">ESP32</h3>
+          <p class="tech-desc">32-bit dual-core microcontroller providing multi-channel ADC, hardware timer, and I2C peripherals.</p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Arduino IDE</h3>
+          <p class="tech-desc">Standard open-source integrated development environment for compiling and flashing ESP32 firmware.</p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Embedded C/C++</h3>
+          <p class="tech-desc">Primary programming language for register configuration, sensor drivers, and safety state logic.</p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 12h2a8 8 0 0 1 8 8v2"/><path d="M2 7h2a13 13 0 0 1 13 13v2"/><circle cx="4" cy="20" r="2"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Ultrasonic Sensing</h3>
+          <p class="tech-desc">Time-of-flight acoustic pulse ranging for front obstacle stopping and left/right blind spot alerts.</p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Accelerometer &amp; Gyroscope</h3>
+          <p class="tech-desc">MEMS 6-DOF IMU motion tracking via I2C to evaluate abnormal deceleration and impact-like events.</p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">LDR-Based Light Sensing</h3>
+          <p class="tech-desc">Analog voltage divider sampling to switch headlights ON in low ambient light and OFF in daylight.</p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Motor Control</h3>
+          <p class="tech-desc">Dual H-bridge direction logic and pulse-width modulation (PWM) for propulsion and emergency braking.</p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="tech-title">Fail-Safe Override</h3>
+          <p class="tech-desc">Dedicated physical push button configured as a hardware interrupt for immediate motor cutoff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 6: INTERACTIVE LOGIC SIMULATOR (EDUCATIONAL SANDBOX)
+       =================================================================== -->
+  <section class="section section-alt" id="simulator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">State Machine Simulation</span>
+        <h2 class="section-title">Interactive Firmware Logic Simulator</h2>
+        <p class="section-desc">
+          Test the embedded control state machine logic of all four safety applications and the emergency override.
+        </p>
+      </div>
+
+      <div class="sim-disclaimer-top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+        <span>
+          <strong>Academic Logic Demonstration Only:</strong> This interactive sandbox simulates the firmware logic flow in software to demonstrate how the ESP32 evaluates thresholds. It is not connected to physical live hardware.
+        </span>
+      </div>
+
+      <div class="simulator-box">
+        <!-- Controls Panel -->
+        <div class="sim-controls-panel">
+          <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 0.5rem;">Input Sensor Sliders &amp; Triggers</h3>
+
+          <!-- App 1: Front Ultrasonic Slider -->
+          <div class="sim-group">
+            <div class="sim-group-header">
+              <span class="sim-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                App 1: Front Distance (HC-SR04)
+              </span>
+              <span class="sim-readout" id="valFront">45 cm</span>
+            </div>
+            <input type="range" class="sim-slider" id="sliderFront" min="2" max="100" value="45">
+            <p style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+              Safety Threshold: &le; 15 cm halts DC motors and sounds buzzer warning.
+            </p>
+          </div>
+
+          <!-- App 2: Left Blind Spot Slider -->
+          <div class="sim-group">
+            <div class="sim-group-header">
+              <span class="sim-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                App 2: Left Blind Spot Distance
+              </span>
+              <span class="sim-readout" id="valLeft">50 cm</span>
+            </div>
+            <input type="range" class="sim-slider" id="sliderLeft" min="2" max="80" value="50">
+            <p style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+              Threshold: &le; 20 cm triggers Left Warning LED.
+            </p>
+          </div>
+
+          <!-- App 2: Right Blind Spot Slider -->
+          <div class="sim-group">
+            <div class="sim-group-header">
+              <span class="sim-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                App 2: Right Blind Spot Distance
+              </span>
+              <span class="sim-readout" id="valRight">50 cm</span>
+            </div>
+            <input type="range" class="sim-slider" id="sliderRight" min="2" max="80" value="50">
+            <p style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+              Threshold: &le; 20 cm triggers Right Warning LED.
+            </p>
+          </div>
+
+          <!-- App 3: Light Sensor Slider -->
+          <div class="sim-group">
+            <div class="sim-group-header">
+              <span class="sim-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2">
+                  <circle cx="12" cy="12" r="5"/>
+                </svg>
+                App 3: Ambient Light Level (LDR)
+              </span>
+              <span class="sim-readout" id="valLight">75%</span>
+            </div>
+            <input type="range" class="sim-slider" id="sliderLight" min="0" max="100" value="75">
+            <p style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.4rem;">
+              Threshold: &lt; 40% turns Headlights ON; &ge; 40% turns Headlights OFF.
+            </p>
+          </div>
+
+          <!-- App 4 & E-Stop Action Buttons -->
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 600; color: #cbd5e1; display: block; margin-bottom: 0.4rem;">
+              Event Triggers (App 4 &amp; Override)
+            </span>
+            <div class="sim-btn-row">
+              <button class="sim-btn-shock" id="btnSimShock" title="Simulates an abnormal movement/shock spike detected by MPU6050">
+                Trigger Impact (App 4)
+              </button>
+              <button class="sim-btn-estop" id="btnSimEstop" title="Simulates pressing the emergency push button">
+                E-Stop Button
+              </button>
+              <button class="sim-btn-reset" id="btnSimReset" title="Restores normal cruising state">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Vehicle Representation & Live Telemetry -->
+        <div class="sim-visual-panel">
+          <div class="sim-panel-title">
+            <span>Prototype Chassis Status Visualizer</span>
+            <span class="sim-mcu-state-badge state-normal" id="telemMcuState">NORMAL RUNNING</span>
+          </div>
+
+          <!-- Interactive Vehicle Diagram SVG -->
+          <div class="car-diagram-box">
+            <svg class="car-chassis-svg" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sonar Waves (Front) -->
+              <path id="svgSonarFront" d="M 80 20 A 25 25 0 0 1 120 20 M 70 12 A 40 40 0 0 1 130 12 M 60 4 A 55 55 0 0 1 140 4" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+              <!-- Car Chassis Body -->
+              <rect x="50" y="45" width="100" height="150" rx="14" fill="#0f1c38" stroke="#38bdf8" stroke-width="2"/>
+              <rect x="62" y="70" width="76" height="85" rx="6" fill="#13264c" stroke="#1e3a8a" stroke-width="1.5"/>
+
+              <!-- Central ESP32 Microcontroller IC on Chassis -->
+              <rect x="75" y="90" width="50" height="50" rx="4" fill="#020617" stroke="#38bdf8" stroke-width="1"/>
+              <text x="100" y="118" fill="#38bdf8" font-size="8" font-family="monospace" font-weight="bold" text-anchor="middle">ESP32</text>
+
+              <!-- Wheels / DC Motors -->
+              <!-- Front Caster -->
+              <rect x="90" y="48" width="20" height="10" rx="2" fill="#64748b"/>
+              <!-- Left Motor Wheel -->
+              <rect id="svgMotorL" x="32" y="130" width="16" height="45" rx="3" fill="#10b981" stroke="#334155" stroke-width="1.5"/>
+              <text x="40" y="125" fill="#94a3b8" font-size="7" font-family="monospace" text-anchor="middle">M-L</text>
+              <!-- Right Motor Wheel -->
+              <rect id="svgMotorR" x="152" y="130" width="16" height="45" rx="3" fill="#10b981" stroke="#334155" stroke-width="1.5"/>
+              <text x="160" y="125" fill="#94a3b8" font-size="7" font-family="monospace" text-anchor="middle">M-R</text>
+
+              <!-- Headlights (App 3) -->
+              <!-- Left Headlight -->
+              <polygon id="svgHeadlightL" class="indicator-headlight" points="58,45 68,45 65,35 61,35" fill="#334155"/>
+              <!-- Right Headlight -->
+              <polygon id="svgHeadlightR" class="indicator-headlight" points="132,45 142,45 139,35 135,35" fill="#334155"/>
+              <text x="100" y="40" fill="#94a3b8" font-size="7" font-family="monospace" text-anchor="middle">HEADLIGHTS</text>
+
+              <!-- Blind Spot LEDs (App 2) -->
+              <!-- Left Blind Spot LED -->
+              <circle id="svgBlindspotL" class="indicator-blindspot-left" cx="44" cy="95" r="6" fill="#334155" stroke="#f59e0b" stroke-width="1"/>
+              <text x="32" y="85" fill="#fbbf24" font-size="7" font-family="monospace">BS-L</text>
+              <!-- Right Blind Spot LED -->
+              <circle id="svgBlindspotR" class="indicator-blindspot-right" cx="156" cy="95" r="6" fill="#334155" stroke="#f59e0b" stroke-width="1"/>
+              <text x="154" y="85" fill="#fbbf24" font-size="7" font-family="monospace">BS-R</text>
+
+              <!-- Piezo Buzzer Indicator (App 1, App 4, E-Stop) -->
+              <circle id="svgBuzzer" class="indicator-buzzer" cx="100" cy="165" r="10" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+              <text x="100" y="168" fill="#f87171" font-size="6" font-family="monospace" text-anchor="middle">BUZZ</text>
+            </svg>
+          </div>
+
+          <!-- Live Telemetry Dashboard -->
+          <div class="telemetry-grid">
+            <div class="telem-card">
+              <span class="telem-label">DC Propulsion Motors</span>
+              <div class="telem-val" id="telemMotors" style="color: #10b981;">RUNNING FORWARD</div>
+            </div>
+            <div class="telem-card">
+              <span class="telem-label">Headlights (App 3)</span>
+              <div class="telem-val" id="telemHeadlights">OFF (Daylight Sufficient)</div>
+            </div>
+            <div class="telem-card">
+              <span class="telem-label">Left Blind Spot (App 2)</span>
+              <div class="telem-val" id="telemBlindspotL">CLEAR</div>
+            </div>
+            <div class="telem-card">
+              <span class="telem-label">Right Blind Spot (App 2)</span>
+              <div class="telem-val" id="telemBlindspotR">CLEAR</div>
+            </div>
+            <div class="telem-card" style="grid-column: span 2;">
+              <span class="telem-label">Piezo Buzzer Status</span>
+              <div class="telem-val" id="telemBuzzer">MUTED (Path Clear)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 7: DEVELOPMENT STATUS & ROADMAP
+       =================================================================== -->
+  <section class="section" id="status">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Project Lifecycle</span>
+        <h2 class="section-title">Development Status</h2>
+        <p class="section-desc">
+          Current implementation progress and milestones for the college mini-project.
+        </p>
+      </div>
+
+      <div class="roadmap-box">
+        <div class="status-highlight-callout">
+          <div class="status-callout-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/>
+            </svg>
+          </div>
+          <div>
+            <div class="status-callout-title">Current Phase: In Progress (Prototyping Stage)</div>
+            <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 0;">
+              The system architecture, pin mapping, and firmware logic design are complete. Bench breadboard testing and hardware chassis integration are actively underway. The project does not claim completion or production vehicle compliance.
+            </p>
+          </div>
+        </div>
+
+        <div class="milestones-timeline">
+          <!-- Milestone 1 -->
+          <div class="milestone-item">
+            <div class="milestone-node node-done">&#10003;</div>
+            <div class="milestone-body">
+              <div class="milestone-meta">
+                <span class="milestone-title">Phase 1: Requirements Definition &amp; Subsystem Selection</span>
+                <span class="milestone-status-badge badge-done">Completed</span>
+              </div>
+              <p class="milestone-desc">
+                Scoped project strictly to the four automotive safety applications, eliminated non-essential modules, and finalized component specifications.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 2 -->
+          <div class="milestone-item">
+            <div class="milestone-node node-done">&#10003;</div>
+            <div class="milestone-body">
+              <div class="milestone-meta">
+                <span class="milestone-title">Phase 2: Single ESP32 Pin Allocation &amp; Circuit Schematics</span>
+                <span class="milestone-status-badge badge-done">Completed</span>
+              </div>
+              <p class="milestone-desc">
+                Mapped all 3 ultrasonic sensors, MPU6050 I2C bus, LDR ADC, L298N motor inputs, LEDs, buzzer, and emergency stop button to ESP32-WROOM-32 GPIOs without pin conflicts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 3 -->
+          <div class="milestone-item">
+            <div class="milestone-node node-active">&bull;</div>
+            <div class="milestone-body" style="border-color: var(--border-cyan);">
+              <div class="milestone-meta">
+                <span class="milestone-title">Phase 3: Sensor Driver &amp; Embedded Firmware Logic Development</span>
+                <span class="milestone-status-badge badge-active">In Progress</span>
+              </div>
+              <p class="milestone-desc">
+                Writing and refining Embedded C/C++ firmware in Arduino IDE for ultrasonic timing, MPU6050 accelerometer vector calculations, and priority interrupt routines.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 4 -->
+          <div class="milestone-item">
+            <div class="milestone-node node-active">&bull;</div>
+            <div class="milestone-body" style="border-color: var(--border-cyan);">
+              <div class="milestone-meta">
+                <span class="milestone-title">Phase 4: Breadboard Prototype &amp; Power Supply Bench Testing</span>
+                <span class="milestone-status-badge badge-active">In Progress</span>
+              </div>
+              <p class="milestone-desc">
+                Bench-testing sensor readings with common ground power isolation between the 5V logic rail and the motor DC supply rail.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 5 -->
+          <div class="milestone-item">
+            <div class="milestone-node node-planned">05</div>
+            <div class="milestone-body">
+              <div class="milestone-meta">
+                <span class="milestone-title">Phase 5: 2WD Chassis Mechanical Assembly &amp; Wiring Harness</span>
+                <span class="milestone-status-badge badge-planned">Planned</span>
+              </div>
+              <p class="milestone-desc">
+                Mounting the front and side ultrasonic brackets, MPU6050, LDR, L298N driver, DC geared motors, and battery holder onto the robotic chassis.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 6 -->
+          <div class="milestone-item">
+            <div class="milestone-node node-planned">06</div>
+            <div class="milestone-body">
+              <div class="milestone-meta">
+                <span class="milestone-title">Phase 6: Integrated Functional Testing &amp; Threshold Tuning</span>
+                <span class="milestone-status-badge badge-planned">Planned</span>
+              </div>
+              <p class="milestone-desc">
+                Validating automatic stopping distances, blind spot detection angles, headlight lux switching, and impact demonstration sensitivity.
+              </p>
+            </div>
+          </div>
+
+          <!-- Milestone 7 -->
+          <div class="milestone-item">
+            <div class="milestone-node node-planned">07</div>
+            <div class="milestone-body">
+              <div class="milestone-meta">
+                <span class="milestone-title">Phase 7: Mini-Project Report Preparation &amp; Academic Review</span>
+                <span class="milestone-status-badge badge-planned">Planned</span>
+              </div>
+              <p class="milestone-desc">
+                Finalizing engineering schematics, source code documentation, and mini-project report for 5th semester viva evaluation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SECTION 8: FUTURE SCOPE (SEPARATE SECTION MARKED AS FUTURE WORK)
+       =================================================================== -->
+  <section class="section section-alt" id="future">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="color: var(--accent-blue-light); border-color: var(--border-blue); background: rgba(59, 130, 246, 0.1);">
+          Prospective Research
+        </span>
+        <h2 class="section-title">Future Scope (Planned Future Work)</h2>
+        <p class="section-desc">
+          Potential long-term architectural expansions clearly segregated from the current 5th semester prototype.
+        </p>
+      </div>
+
+      <div class="future-scope-banner">
+        <div class="future-scope-notice">
+          <strong>Academic Scope Boundary:</strong> The features listed below are <em>NOT</em> included in the current mini-project prototype. They represent theoretical research directions and prospective future enhancements for subsequent semesters or final-year capstone work.
+        </div>
+
+        <div class="future-grid">
+          <div class="future-card">
+            <span class="future-tag">Future Work 01</span>
+            <h4>CAN-Bus Automotive Protocol</h4>
+            <p>Integrating a MCP2515 CAN transceiver module to emulate Controller Area Network vehicular bus communication between distributed Electronic Control Units (ECUs).</p>
+          </div>
+
+          <div class="future-card">
+            <span class="future-tag">Future Work 02</span>
+            <h4>GSM Emergency SMS Alerts</h4>
+            <p>Adding a SIM800L or SIM900 cellular modem to automatically dispatch emergency SMS distress alerts to registered emergency contacts when an impact event is triggered.</p>
+          </div>
+
+          <div class="future-card">
+            <span class="future-tag">Future Work 03</span>
+            <h4>GPS Geolocation Tracking</h4>
+            <p>Incorporating a NEO-6M satellite receiver to extract real-time latitude and longitude coordinates for incident location mapping.</p>
+          </div>
+
+          <div class="future-card">
+            <span class="future-tag">Future Work 04</span>
+            <h4>Cloud Telemetry &amp; IoT Dashboard</h4>
+            <p>Utilizing ESP32 Wi-Fi capabilities to stream vehicle telemetry to a cloud MQTT broker for fleet tracking and predictive maintenance logging.</p>
+          </div>
+
+          <div class="future-card">
+            <span class="future-tag">Future Work 05</span>
+            <h4>Dedicated Mobile Companion App</h4>
+            <p>Developing an Android/iOS diagnostic application over Bluetooth Low Energy (BLE) to display live sensor graphs and calibrate threshold parameters wirelessly.</p>
+          </div>
+
+          <div class="future-card">
+            <span class="future-tag">Future Work 06</span>
+            <h4>Advanced Vision &amp; Radar Fusion</h4>
+            <p>Investigating millimeter-wave radar sensors or camera-based machine vision modules for higher-speed automotive collision prediction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FOOTER & ACADEMIC ATTRIBUTION
+       =================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Multi-Functional Smart Automotive Safety System Using ESP32</h4>
+          <p>
+            A 5th semester engineering mini-project demonstrating four basic active vehicle safety applications on a single ESP32-WROOM-32 development board.
+          </p>
+
+          <div class="footer-meta-box">
+            <div><strong>Student / Team:</strong> <span>[Student Name / Roll Number]</span></div>
+            <div style="margin-top: 0.35rem;"><strong>Department:</strong> <span>[Department of Engineering]</span></div>
+            <div style="margin-top: 0.35rem;"><strong>Institution:</strong> <span>[College / University Name]</span></div>
+            <div style="margin-top: 0.35rem;"><strong>Academic Guide:</strong> <span>[Project Guide Name]</span></div>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h5>Project Applications</h5>
+          <ul class="footer-links-list">
+            <li><a href="#applications">Obstacle Detection &amp; Auto Stopping</a></li>
+            <li><a href="#applications">Blind Spot Detection (Left &amp; Right)</a></li>
+            <li><a href="#applications">Automatic Headlight Control (LDR)</a></li>
+            <li><a href="#applications">Accident Detection Demonstration</a></li>
+            <li><a href="#estop">Emergency Stop Push Button</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h5>Documentation &amp; Design</h5>
+          <ul class="footer-links-list">
+            <li><a href="#overview">Project Overview &amp; Objectives</a></li>
+            <li><a href="#architecture">Working Architecture &amp; Data Flow</a></li>
+            <li><a href="#components">Hardware Components (11 Items)</a></li>
+            <li><a href="#technologies">Technologies &amp; Tools</a></li>
+            <li><a href="#simulator">Interactive Logic Sandbox</a></li>
+            <li><a href="#status">Development Status (In Progress)</a></li>
+            <li><a href="#future">Future Scope</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; [Academic Year 2024&ndash;2025 / 2025&ndash;2026] &bull; Engineering Mini-Project Portfolio.
+        </div>
+        <div>
+          Status: <span style="color: var(--accent-cyan); font-weight: 600;">In Progress / Prototype Stage</span> &bull; Single ESP32-WROOM-32 Platform
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="btn-back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mpuPcb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <!-- Blue Breakout Board -->
+  <rect x="50" y="30" width="220" height="160" rx="8" fill="url(#mpuPcb)" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Mounting corner holes -->
+  <circle cx="65" cy="45" r="5" fill="#0f172a" stroke="#7dd3fc" stroke-width="1.5"/>
+  <circle cx="255" cy="45" r="5" fill="#0f172a" stroke="#7dd3fc" stroke-width="1.5"/>
+  <!-- Central MPU6050 IC (QFN) -->
+  <rect x="125" y="80" width="70" height="70" rx="4" fill="#0f172a" stroke="#475569" stroke-width="2"/>
+  <!-- Chip Pin Indicators -->
+  <circle cx="137" cy="92" r="3" fill="#cbd5e1"/>
+  <text x="160" y="115" fill="#f8fafc" font-size="10" font-family="sans-serif" font-weight="bold" text-anchor="middle">MPU-6050</text>
+  <text x="160" y="130" fill="#94a3b8" font-size="7" font-family="monospace" text-anchor="middle">6-DOF IMU</text>
+  <!-- Orientation Axes Indicator -->
+  <g stroke="#22d3ee" stroke-width="1.5" fill="none">
+    <line x1="80" y1="120" x2="105" y2="120" marker-end="url(#arrow)"/>
+    <line x1="80" y1="120" x2="80" y2="95"/>
+    <circle cx="80" cy="120" r="2" fill="#22d3ee"/>
+  </g>
+  <text x="110" y="123" fill="#22d3ee" font-size="8" font-family="monospace">X</text>
+  <text x="80" y="88" fill="#22d3ee" font-size="8" font-family="monospace">Y</text>
+  <text x="70" y="135" fill="#22d3ee" font-size="8" font-family="monospace">⊙ Z</text>
+  <!-- Power LED -->
+  <rect x="220" y="65" width="8" height="6" fill="#ef4444" rx="1"/>
+  <text x="224" y="60" fill="#f87171" font-size="7" font-family="monospace" text-anchor="middle">PWR</text>
+  <!-- 3.3V LDO Voltage Regulator -->
+  <rect x="215" y="95" width="20" height="15" rx="1" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+  <!-- Board Name -->
+  <text x="160" y="55" fill="#f0f9ff" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle">GY-521 BREAKOUT</text>
+  <!-- Pin Header at Bottom (8 pins) -->
+  <g fill="#f59e0b">
+    <rect x="70" y="180" width="8" height="16" rx="1"/><rect x="90" y="180" width="8" height="16" rx="1"/>
+    <rect x="110" y="180" width="8" height="16" rx="1"/><rect x="130" y="180" width="8" height="16" rx="1"/>
+    <rect x="150" y="180" width="8" height="16" rx="1"/><rect x="170" y="180" width="8" height="16" rx="1"/>
+    <rect x="190" y="180" width="8" height="16" rx="1"/><rect x="210" y="180" width="8" height="16" rx="1"/>
+  </g>
+  <g fill="#bae6fd" font-size="6" font-family="monospace" text-anchor="middle">
+    <text x="74" y="174">VCC</text><text x="94" y="174">GND</text>
+    <text x="114" y="174">SCL</text><text x="134" y="174">SDA</text>
+    <text x="154" y="174">XDA</text><text x="174" y="174">XCL</text>
+    <text x="194" y="174">AD0</text><text x="214" y="174">INT</text>
+  </g>
+</svg>
